@@ -177,6 +177,9 @@ cp -r ~/dwm-dotfiles/config/zathura/ ~/.config/
 cd
 cp -r ~/dwm-dotfiles/wallpapers/ ~/.local/share/
 
+cd
+touch .xinitrc
+echo -e "exec dbus-run-session dwm" > $HOME/.xinitrc
 
 sudo apt autoremove
 
