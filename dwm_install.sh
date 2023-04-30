@@ -19,7 +19,7 @@ s="sudo"
 
 
 echo "|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|"
-echo "|  DWM Installer   |"
+echo "|Workpace Installer|"
 echo "|__________________|"
 echo ""
 echo ""
