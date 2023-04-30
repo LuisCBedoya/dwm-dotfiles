@@ -141,6 +141,18 @@ $s cp -r ~/dwm-dotfiles/config/fonts/JetBrainsMonoFonts /usr/share/fonts/
 $s cp -r dwm-dotfiles/config/fonts/HackerNerdFonts /usr/share/fonts/
 
 
+#install suckless tools
+cd
+cp -r dwm-dotfiles/config/suckless ~/.config/
+cd .config/suckless/dwm && $s make clean install
+
+cd
+cd .config/suckless/dmenu && $s make clean install
+
+cd
+cd .config/suckless/slstatus  && $s make clean install
+
+
 #kitty files
 cd
 cp -r ~/dwm-dotfiles/config/kitty/ ~/.config/
@@ -162,5 +174,10 @@ cd
 cp -r ~/dwm-dotfiles/config/zathura/ ~/.config/
 
 #wallpapers
+cd
 cp -r ~/dwm-dotfiles/wallpapers/ ~/.local/share/
 
+
+sudo apt autoremove
+
+printf "\e[1;32mReinicia para aplicar cambios.\e[0m\n"
