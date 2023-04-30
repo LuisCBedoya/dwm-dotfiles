@@ -11,8 +11,8 @@ FULL_BAT=60
 #
 BAT_PATH=/sys/class/power_supply/BAT1
 BAT_STAT=$BAT_PATH/status
-low="$HOME/.config/dunst/sound/low_battery.mp3"
-full="$HOME/.config/dunst/sound/full_battery.mp3"
+low="$HOME/.config/dunst/sound/low_battery.ogg"
+full="$HOME/.config/dunst/sound/full_battery.ogg"
 
 
 if [[ -f $BAT_PATH/charge_full ]]

@@ -53,6 +53,9 @@ $i xorg xbacklight xbindkeys xinput xorg-dev
 # $i amd64-microcode --------------------------------------------
 $i intel-microcode
 
+#nvidia driver -------------------------------------------------------------------------------
+$i nvidia-driver
+
 #Paquetes para compilar ------------------------------------------
 $i linux-headers-$(uname -r) build-essential make automake pkg-config cmake autoconf git curl wget unzip tar gzip python3-pip
 $i libncurses-dev flex bison openssl libssl-dev dkms libelf-dev pkg-config liblz4-tool
@@ -106,6 +109,16 @@ meson setup --buildtype=release . build
 ninja -C build
 $s ninja -C build install
 
+#install lsd command line
+cd
+wget https://github.com/lsd-rs/lsd/releases/download/0.23.1/lsd-musl_0.23.1_amd64.deb
+$s dpkg -i lsd-musl_0.23.1_amd64.deb
+
+#nvim
+cd
+wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+chmod u+x nvim.appimage
+$s mv nvim.appimage /usr/bin/nvim
 
 #user packages
 $i1 kitty feh ripgrep chromium sxiv pcmanfm flameshot dunst libnotify-bin
