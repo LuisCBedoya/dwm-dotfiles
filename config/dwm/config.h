@@ -11,7 +11,7 @@ static const char dmenufont[]       = "HackNerdFont:size=9:style=Bold";
 static const char col_gray1[]       = "#161515"; /*191e25*/
 static const char col_gray2[]       = "#c6c6c6";
 static const char col_gray3[]       = "#000000";
-static const char col_gray4[]       = "#0C5471";
+static const char col_gray4[]       = "#506980";
 static const char col_cyan[]        = "#2D3A46";/*607190*/
 static const unsigned int baralpha        = 100;
 static const unsigned int borderalpha     = 100;
