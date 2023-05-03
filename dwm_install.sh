@@ -51,7 +51,7 @@ $i libncurses-dev flex bison openssl libssl-dev dkms libelf-dev pkg-config liblz
 # Network File Tools/System Events --------------------------------
 $i dialog mtools dosfstools avahi-daemon acpi acpid gvfs-backends network-manager
 
-#enable services ----------------------------------------------
+enable services ----------------------------------------------
 sudo systemctl enable avahi-daemon
 sudo systemctl enable acpid
 
@@ -70,18 +70,23 @@ $i libpipewire-module-x11-bell
 $i wireplumber{,-doc} gir1.2-wp-0.4 libwireplumber-0.4-{0,dev}
 $i wireplumber-locales
 
-#enable pipewire -----------------------------------------------
+enable pipewire -----------------------------------------------
 systemctl --user --now enable pipewire{,-pulse}.{socket,service}
 
-#enable wirepumbler --------------------------------------------
+enable wirepumbler --------------------------------------------
 systemctl --user --now enable wireplumber.service
 
 #fonts -------------------------------------------------------------
 $i fonts-noto fonts-noto-cjk fonts-noto-extra fonts-noto-color-emoji
 
-#install cargo, npm, nodejs -----------------------------------------
-$s apt install -t bullseye-backports nodejs npm
+#install nvm
+cd
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
+#install npm and nodejs
+nvm install --lts
+
+#Install cargo
 cd
 curl https://sh.rustup.rs -sSf | sh
 
@@ -112,7 +117,7 @@ $s mv nvim.appimage /usr/bin/nvim
 $i1 kitty feh ripgrep chromium sxiv pcmanfm flameshot dunst libnotify-bin
 
 #install mpv last version
-$s apt install -t bullseye-backports libdvdnav4 liblua5.2-0 libmodplug1 libopencore-amrnb0 libopencore-amrwb0 libssh-4 libvo-amrwbenc0 libxpresent1
+$i -t bullseye-backports libdvdnav4 liblua5.2-0 libmodplug1 libopencore-amrnb0 libopencore-amrwb0 libssh-4 libvo-amrwbenc0 libxpresent1
 
 wget https://non-gnu.uvt.nl/debian/bullseye/mpv/mpv_0.35.1+fruit.3_amd64.deb
 
@@ -131,7 +136,11 @@ $s cp -r dwm-dotfiles/config/fonts/HackerNerdFonts /usr/share/fonts/
 
 #install suckless tools
 cd
-cp -r dwm-dotfiles/config/suckless ~/.config/
+cp -r dwm-dotfiles/config/suckless/dwm ~/.config/
+ 
+
+cd
+cp -r dwm-dotfiles/config/suckles ~/.config/
 cd .config/suckless/dwm && $s make clean install
 
 cd

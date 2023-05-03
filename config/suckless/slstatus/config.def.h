@@ -65,5 +65,9 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ datetime, "%s",           "%F %T" },
+	{ run_command," 󱄠 %s ", "pactl list sinks | tr ' ' '\n' | grep -m1 '%'"},
+        { cpu_perc, " 󰻠 %s%% ", NULL },
+	{ ram_perc, " 󱋪 %s%% ", NULL },
+	{ disk_perc," 󰋊 %s%% ", "/" },
+	{ datetime, " 󰥔 %s ",           "%H:%M" },
 };
