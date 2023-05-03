@@ -1,7 +1,6 @@
 vim.g.completeopt = "menu,menuone,noselect,noinsert"
 
 local cmp = require("cmp")
-
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine

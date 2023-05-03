@@ -3,19 +3,6 @@
 i="sudo apt install -y"
 i1="sudo apt install --no-install-recommends -y"
 s="sudo"
-#gestor de video - mpv
-#gestor de imagenes sxiv
-#gestor de archivos pcmanfm
-#screenshot flameshot
-#gestor de aplicaciones dmenu
-#wm - dwm
-#trasparencia picom
-#notificaciones dunst
-#bar slstatus
-#terminal kitty
-#explorador chromium
-#editor IDE neovim
-#editor de dibujo drawing
 
 
 echo "|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|"
@@ -36,6 +23,8 @@ else
 	exit 1
 fi
 
+#gnupg
+$i gnupg gnupg2 gnupg1
 
 # backports repository and pipewire, wireplumber
 cd
@@ -43,7 +32,6 @@ $s cp -r dwm-dotfiles/config/files/pipewire-upstream.list /etc/apt/sources.list.
 $s cp -r dwm-dotfiles/config/files/wireplumber-upstream.list /etc/apt/sources.list.d/
 $s cp -r dwm-dotfiles/config/files/bullseye-backports.list /etc/apt/sources.list.d/
 $s apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 25088A0359807596
-
 
 $s apt update -y && $s apt upgrade -y
 
@@ -58,10 +46,10 @@ $i nvidia-driver
 
 #Paquetes para compilar ------------------------------------------
 $i linux-headers-$(uname -r) build-essential make automake pkg-config cmake autoconf git curl wget unzip tar gzip python3-pip
-$i libncurses-dev flex bison openssl libssl-dev dkms libelf-dev pkg-config liblz4-tool
+$i libncurses-dev flex bison openssl libssl-dev dkms libelf-dev pkg-config liblz4-tool bc rsync
 
 # Network File Tools/System Events --------------------------------
-$i dialog mtools dosfstools avahi-daemon acpi acpid gvfs-backends
+$i dialog mtools dosfstools avahi-daemon acpi acpid gvfs-backends network-manager
 
 #enable services ----------------------------------------------
 sudo systemctl enable avahi-daemon
@@ -92,7 +80,7 @@ systemctl --user --now enable wireplumber.service
 $i fonts-noto fonts-noto-cjk fonts-noto-extra fonts-noto-color-emoji
 
 #install cargo, npm, nodejs -----------------------------------------
-$i nodejs npm
+$s apt install -t bullseye-backports nodejs npm
 
 cd
 curl https://sh.rustup.rs -sSf | sh

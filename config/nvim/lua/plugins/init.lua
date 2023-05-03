@@ -17,38 +17,28 @@ return require("packer").startup({
     -- ----------------------------------------------------------------------------------------------------------------------
     -- packer plugin manager
     use({ "wbthomason/packer.nvim" })
-    -- theme nightfox
-    use("EdenEast/nightfox.nvim")
     -- a statusline
     use({ "nvim-lualine/lualine.nvim" })
-    -- bufferline
-    use({ "akinsho/bufferline.nvim", tag = "v3.*" })
+     -- bufferline
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'} 
     -- file explorer
-    use({ "nvim-tree/nvim-tree.lua" })
+    use({ "nvim-tree/nvim-tree.lua" }) 
     -- Find, Filter, Preview, Pick. All lua, all the time.
     use({ "nvim-telescope/telescope.nvim", tag = "0.1.1", requires = { { "nvim-lua/plenary.nvim" } } })
-
+    
     -- treesitter and modules -----------------------------------------------------
-    -- file explorer
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    use({ "p00f/nvim-ts-rainbow" })
-    --> autopairs
+    -- syntax 
+    use({ "nvim-treesitter/nvim-treesitter", run = ':TSUpdate' })
+    -- autopairs
     use({ "windwp/nvim-autopairs" })
     -- autotag
     use({ "windwp/nvim-ts-autotag" })
     -- comments
-    use({ "terrortylor/nvim-comment" })
+    use({ "terrortylor/nvim-comment" })   
     -- indent guides for neovim
     use({ "lukas-reineke/indent-blankline.nvim" })
     -- nvim-colorizer
     use({ "norcalli/nvim-colorizer.lua" })
-    --   ----------------------------------------------------------------------------
-
-    -- keybindings in popup
-    use({ "folke/which-key.nvim" })
-    -- enable icons
-    use({ "nvim-tree/nvim-web-devicons" })
-
     -- nvim-cmp - A completion engine plugin for neovim written in Lua. -----------------------------
     use({ "hrsh7th/cmp-nvim-lsp" })
     use({ "hrsh7th/cmp-buffer" })
@@ -56,12 +46,15 @@ return require("packer").startup({
     use({ "hrsh7th/cmp-cmdline" })
     use({ "hrsh7th/nvim-cmp" })
     use({ "hrsh7th/cmp-vsnip" })
-
     --  snippet
     use({ "hrsh7th/vim-vsnip" })
     use({ "hrsh7th/vim-vsnip-integ" })
-    -- ----------------------------------------------------------------------------------------------
-    -- git info
+    -- ----------------------------------------------------------------------------------------------   
+     -- keybindings in popup
+    use({ "folke/which-key.nvim" })
+    -- enable icons
+    use({ "nvim-tree/nvim-web-devicons" })
+      -- git info
     use({
       "lewis6991/gitsigns.nvim",
       config = function()
@@ -80,10 +73,6 @@ return require("packer").startup({
     use({ "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig" })
     -- format null-ls
     use({ "jose-elias-alvarez/null-ls.nvim", config = "require('null-ls-config')" })
-    -- zen-mode
-    use({ "folke/zen-mode.nvim", config = "require('zen-mode-config')" })
-    -- twilight focus mode
-    -- use {"folke/twilight.nvim",config = "require('twilight-config')"}
     -- onedark theme
     use({ "navarasu/onedark.nvim" })
   end,
