@@ -70,11 +70,11 @@ $i libpipewire-module-x11-bell
 $i wireplumber{,-doc} gir1.2-wp-0.4 libwireplumber-0.4-{0,dev}
 $i wireplumber-locales
 
-enable pipewire -----------------------------------------------
-systemctl --user --now enable pipewire{,-pulse}.{socket,service}
+#enable pipewire -----------------------------------------------
+#systemctl --user --now enable pipewire{,-pulse}.{socket,service}
 
-enable wirepumbler --------------------------------------------
-systemctl --user --now enable wireplumber.service
+#enable wirepumbler --------------------------------------------
+#systemctl --user --now enable wireplumber.service
 
 #fonts -------------------------------------------------------------
 $i fonts-noto fonts-noto-cjk fonts-noto-extra fonts-noto-color-emoji
@@ -137,18 +137,21 @@ $s cp -r dwm-dotfiles/config/fonts/HackerNerdFonts /usr/share/fonts/
 #install suckless tools
 cd
 cp -r dwm-dotfiles/config/suckless/dwm ~/.config/
- 
 
 cd
-cp -r dwm-dotfiles/config/suckles ~/.config/
-cd .config/suckless/dwm && $s make clean install
+cp -r dwm-dotfiles/config/suckless/dmenu ~/.config/
 
 cd
-cd .config/suckless/dmenu && $s make clean install
+cp -r dwm-dotfiles/config/suckless/slstatus ~/.config/
 
 cd
-cd .config/suckless/slstatus  && $s make clean install
+cd .config/dwm && make && $s make clean install
 
+cd
+cd .config/dmenu && make && $s make clean install
+
+cd
+cd .config/slstatus  && make && $s make clean install
 
 #kitty files
 cd
