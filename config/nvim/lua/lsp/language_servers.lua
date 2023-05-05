@@ -11,6 +11,14 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     },
 }
 
+-- Give me rounded borders everywhere
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = "rounded"
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 --Enable (broadcasting) snippet capability for completion
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -46,7 +54,6 @@ require("lspconfig").lua_ls.setup({
 -- -----------------------------------------------------------------------------------------------------------------------------
 -- language-servers for css
 require("lspconfig").cssls.setup({
-    cmd = { "vscode-css-language-server.cmd", "--stdio" },
     capabilities = capabilities,
     settings = {
         scss = {
@@ -73,10 +80,31 @@ require("lspconfig").tsserver.setup({
     end,
 })
 -- language-servers for html
-require("lspconfig").html.setup({
-    cmd = { "vscode-html-language-server.cmd", "--stdio" },
+require("lspconfig").emmet_ls.setup({
     capabilities = capabilities,
     on_attach = function(client)
         client.server_capabilities.document_formatting = false
     end,
+    filetypes = {
+        "css",
+        "eruby",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "less",
+        "sass",
+        "scss",
+        "svelte",
+        "pug",
+        "typescriptreact",
+        "vue",
+    },
+    init_options = {
+        html = {
+            options = {
+                -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                ["bem.enabled"] = true,
+            },
+        },
+    },
 })
