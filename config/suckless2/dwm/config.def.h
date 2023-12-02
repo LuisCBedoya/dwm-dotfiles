@@ -17,6 +17,15 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
+
+static const char *const autostart[] = {
+  "dunst", NULL,
+  "sh", "-c", "~/.config/dunst/scripts/low_bat_notifier.sh", NULL,
+	"/usr/bin/lxpolkit", NULL,
+	NULL /* terminate */
+};
+
+
 /* tagging */
 /*static const char *tags[] = { "0", "1", "2", "3", "4"};*/
 /*static const char *tags[] = { "α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι" };*/
@@ -64,6 +73,11 @@ static const char *termcmda[]  = { "st", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *web[]  = { "chromium", NULL };
 static const char *flame[] =   { "flameshot", "gui", NULL };
+static const char *files[] =   { "pcmanfm", NULL };
+static const char *pass[] =   { "keepassxc", NULL };
+static const char *app[] =   { "ristretto", NULL };
+/* static const char *idea[] =   { "sh /opt/idea/bin/idea.sh", NULL }; */
+
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -71,14 +85,18 @@ static const Key keys[] = {
 	{ MODKEY,             		      XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmda } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = web } },
-  { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = flame } },
+  { MODKEY|ShiftMask,             XK_p,      spawn,          {.v = files } },
+  { MODKEY|ShiftMask,             XK_r,      spawn,          {.v = app } },
+  { MODKEY|ShiftMask,             XK_k,      spawn,          {.v = pass } },
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = flame } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("sh /opt/idea/bin/idea.sh") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ControlMask,            XK_Return, zoom,           {0} },
+	{ MODKEY|ControlMask,           XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -101,7 +119,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-  {MODKEY|ControlMask|ShiftMask,  XK_q,      quit,           {0} }
+  	{MODKEY|ControlMask|ShiftMask,  XK_q,      quit,           {0} }
 };
 
 /* button definitions */
