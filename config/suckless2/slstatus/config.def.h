@@ -65,7 +65,7 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-  { run_command, "[temp %s°C -> 90°C ] ", "sensors | awk '/^Package/ { print $4+0 }' " },
+  { run_command, "[temp %s°C max 90°C ] ", "sensors | awk '/^Package/ { print $4+0 }' " },
 	{ run_command," [vol %s] ", "pactl list sinks | tr ' ' '\n' | grep -m1 '%'"},
   { cpu_perc, " [cpu %s%%] ", NULL },
 	{ ram_perc, " [ram %s%%] ", NULL },
