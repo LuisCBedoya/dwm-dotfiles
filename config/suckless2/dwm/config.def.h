@@ -7,29 +7,31 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "HackNerdFont:size=9:style=Bold" };
 static const char dmenufont[]       = "HackNerdFont:size=9:style=Bold";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char *colors[][3]      = {
+static const char col_gray1[]       = "#161515"; /*191e25*/
+static const char col_gray2[]       = "#c6c6c6";
+static const char col_gray3[]       = "#000000";
+static const char col_gray4[]       = "#506980";
+static const char col_cyan[]        = "#2D3A46";/*607190*/
+static const char *colors[][3] = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_gray2, col_gray3, col_gray1 },
+	[SchemeSel]  = { col_gray4, col_gray3,  col_cyan  },
 };
 
 static const char *const autostart[] = {
   "dunst", NULL,
+  "nitrogen", "--restore", NULL,
   "sh", "-c", "~/.config/dunst/scripts/low_bat_notifier.sh", NULL,
 	"/usr/bin/lxpolkit", NULL,
 	NULL /* terminate */
 };
 
 
+
 /* tagging */
 /*static const char *tags[] = { "0", "1", "2", "3", "4"};*/
 /*static const char *tags[] = { "α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι" };*/
-static const char *tags[] = { "term", "www", "nvim", "docs", "fm", "irc", "recs", "foo", "bar" };
+static const char *tags[] = { "term", "www", "vmc", "mus", "fm", "irc", "recs", "foo", "bar" };
 /* static const char *tags[] = { "ぜろ", " いち", "に", "さん", "し", "ご", "ろく", "しち", "はち" }; */
 
 static const Rule rules[] = {
@@ -68,28 +70,38 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0";
-static const char *dmenucmd[] = { "dmenu_run", "-p", ":", NULL };
-static const char *termcmda[]  = { "st", NULL };
+static const char *dmenucmd[] = { "rofi", "-show","drun", NULL };
+/* static const char *termcmda[]  = { "st", NULL }; */
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *web[]  = { "chromium", NULL };
 static const char *flame[] =   { "flameshot", "gui", NULL };
-static const char *files[] =   { "pcmanfm", NULL };
+static const char *files[] =   { "thunar", NULL };
 static const char *pass[] =   { "keepassxc", NULL };
-static const char *app[] =   { "ristretto", NULL };
+static const char *img[] =   { "phototonic", NULL };
+static const char *vol[] =   { "pavucontrol", NULL };
+static const char *wal[] =   { "nitrogen", NULL };
+static const char *apa[] =   { "lxappearance", NULL };
 /* static const char *idea[] =   { "sh /opt/idea/bin/idea.sh", NULL }; */
 
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+
   { MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		      XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmda } },
+	/* { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmda } }, */
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = web } },
   { MODKEY|ShiftMask,             XK_p,      spawn,          {.v = files } },
-  { MODKEY|ShiftMask,             XK_r,      spawn,          {.v = app } },
+  { MODKEY|ShiftMask,             XK_r,      spawn,          {.v = img } },
   { MODKEY|ShiftMask,             XK_k,      spawn,          {.v = pass } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = flame } },
-	{ MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("sh /opt/idea/bin/idea.sh") },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = vol } },
+	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = wal } },
+	{ MODKEY|ShiftMask,             XK_a,      spawn,          {.v = apa } },
+
+
+
+	/* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("sh /opt/idea/bin/idea.sh") }, */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
