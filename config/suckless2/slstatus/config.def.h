@@ -63,13 +63,15 @@ static const char unknown_str[] = "n/a";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
-
 static const struct arg args[] = {
 	/* function format          argument */
-	{ run_command," [vol] %s ", "pactl list sinks | tr ' ' '\n' | grep -m1 '%'"},
-        { cpu_perc, " [cpu] %s%% ", NULL },
-	{ ram_perc, " [ram] %s%% ", NULL },
-	{ disk_perc," [disk] %s%% ", "/" },
-	{ datetime, " [hours] %s ",           "%H:%M" },
+  { run_command, "[temp %s°C -> 90°C ] ", "sensors | awk '/^Package/ { print $4+0 }' " },
+	{ run_command," [vol %s] ", "pactl list sinks | tr ' ' '\n' | grep -m1 '%'"},
+  { cpu_perc, " [cpu %s%%] ", NULL },
+	{ ram_perc, " [ram %s%%] ", NULL },
+	{ disk_perc," [disk %s%%] ", "/" },
+  { ipv4, "[eth %s] ", "enp3s0" },
+  { ipv4, "[wlan %s] ", "wlo1" },
+  { battery_perc, "[bat %s%] ", "BAT1" },
+	{ datetime, " [hours %s] ", "%H:%M" },
 };
-
