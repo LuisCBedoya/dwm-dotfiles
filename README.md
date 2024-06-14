@@ -6,4 +6,3 @@ dwm-dotfiles
 ![dwm](https://user-images.githubusercontent.com/90487955/235333491-646c7228-29ef-49fc-971e-c550dc37135e.png)
 
 
-![dwm](https://github.com/LuisCBedoya/dwm-dotfiles/assets/90487955/2ad413c2-e099-4fee-b52f-21c359d3a100)
